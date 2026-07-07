@@ -28,7 +28,7 @@
       </div>
 
       <div class="contact-right">
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" action="https://formspree.io/f/xwkzbgln" method="POST">
           <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" id="name" name="name" required placeholder="Tu nombre">
@@ -44,11 +44,7 @@
             <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary submit-btn">
-            <span class="btn-text">Enviar →</span>
-            <span class="btn-loading" style="display: none;">Enviando...</span>
-            <span class="btn-success" style="display: none;">✓ Enviado</span>
-          </button>
+          <button type="submit" class="btn btn-primary">Enviar →</button>
         </form>
       </div>
     </div>
@@ -141,22 +137,6 @@
     justify-content: center;
   }
 
-  .submit-btn.loading .btn-text,
-  .submit-btn.success .btn-text {
-    display: none;
-  }
-
-  .submit-btn.loading .btn-loading,
-  .submit-btn.success .btn-success {
-    display: inline-flex !important;
-  }
-
-  .submit-btn.success {
-    background: var(--black);
-    border-color: var(--black);
-    color: var(--white);
-  }
-
   @media (max-width: 768px) {
     .contact-grid {
       grid-template-columns: 1fr;
@@ -164,26 +144,3 @@
     }
   }
 </style>
-
-<script>
-  const form = document.getElementById('contactForm') as HTMLFormElement;
-  const submitBtn = form?.querySelector('.submit-btn') as HTMLButtonElement;
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    submitBtn.classList.remove('loading');
-    submitBtn.classList.add('success');
-
-    setTimeout(() => {
-      form.reset();
-      submitBtn.classList.remove('success');
-      submitBtn.disabled = false;
-    }, 2500);
-  });
-</script>

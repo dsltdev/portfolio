@@ -5,4 +5,12 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://davidlopez.github.io',
   output: 'static',
+  build: {
+    inlineStylesheets: 'always'
+  },
+  vite: {
+    build: {
+      cssMinify: true
+    }
+  }
 });

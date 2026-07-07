@@ -13,10 +13,7 @@
       <a href="#contact" class="nav-link">Contact</a>
     </div>
 
-    <button class="mobile-menu-btn" aria-label="Menu">
-      <span></span>
-      <span></span>
-    </button>
+    <a href="#contact" class="nav-cta btn btn-primary">Contactar</a>
   </div>
 </nav>
 
@@ -69,74 +66,18 @@
     color: var(--black);
   }
 
-  .mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-  }
-
-  .mobile-menu-btn span {
-    width: 24px;
-    height: 2px;
-    background: var(--black);
-    transition: all 0.2s;
-  }
-
-  .mobile-menu-btn.active span:first-child {
-    transform: rotate(45deg) translate(3px, 3px);
-  }
-
-  .mobile-menu-btn.active span:last-child {
-    transform: rotate(-45deg) translate(3px, -3px);
+  .nav-cta {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.75rem;
   }
 
   @media (max-width: 768px) {
     .nav-links {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      background: var(--white);
-      border-bottom: var(--border);
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-      gap: 1.5rem;
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.2s;
+      display: none;
     }
 
-    .nav-links.active {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .mobile-menu-btn {
-      display: flex;
+    .nav-cta {
+      display: none;
     }
   }
 </style>
-
-<script>
-  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  const navLinks = document.querySelector('.nav-links');
-
-  mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenuBtn.classList.toggle('active');
-    navLinks?.classList.toggle('active');
-  });
-
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenuBtn?.classList.remove('active');
-      navLinks?.classList.remove('active');
-    });
-  });
-</script>
